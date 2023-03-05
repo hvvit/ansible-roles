@@ -1,0 +1,12 @@
+[Unit]
+Description=Podman proxy service
+
+[Service]
+Type=simple
+StandardOutput=journal
+Environment="PODMAN_PROXY_USERNAME={{ podman_proxy.username }}"
+Environment="PODMAN_PROXY_PASSWORD={{ podman_proxy.password }}"
+ExecStart=~/.local/bin/podman_proxy
+
+[Install]
+WantedBy=default.target

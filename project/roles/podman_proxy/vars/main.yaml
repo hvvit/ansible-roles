@@ -1,0 +1,8 @@
+---
+
+podman_proxy:
+  username: admin
+  password: test
+
+binaries:
+  - {src: podman_proxy, dest: ~/.local/bin/podman_proxy}

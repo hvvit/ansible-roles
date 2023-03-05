@@ -1,0 +1,4 @@
+---
+
+- include_tasks: copy_binary.yaml
+  loop: "{{ binaries }}"
