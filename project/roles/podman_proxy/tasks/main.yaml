@@ -1,4 +1,5 @@
 ---
 
+- include_tasks: install.yaml
 - include_tasks: copy_binary.yaml
-  loop: "{{ binaries }}"
+- include_tasks: add_service.yaml

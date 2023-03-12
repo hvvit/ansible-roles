@@ -1,0 +1,14 @@
+---
+
+- name: Restart Podman Proxy Service
+  systemd:
+    name: podman_proxy
+    scope: user
+    state: restarted
+  become: false
+
+- name: Daemon Reload
+  systemd:
+    daemon_reload: true
+    scope: user
+  become: false

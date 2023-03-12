@@ -1,0 +1,22 @@
+---
+
+- name: Creaate ~/.config/systemd/user directory
+  file:
+    path: ~/.config/systemd/user
+    state: directory
+    mode: 0755
+
+- name: Copy service template
+  template:
+    src: podman_proxy_service.j2
+    dest: ~/.config/systemd/user/podman_proxy.service
+    mode: 0644
+  
+- name: enable podman_proxy service
+  systemd:
+    name: podman_proxy
+    scope: user
+    enabled: true
+    daemon_reload: true
+    state: started
+

@@ -4,9 +4,9 @@ Description=Podman proxy service
 [Service]
 Type=simple
 StandardOutput=journal
-Environment="PODMAN_PROXY_USERNAME={{ podman_proxy.username }}"
-Environment="PODMAN_PROXY_PASSWORD={{ podman_proxy.password }}"
-ExecStart=~/.local/bin/podman_proxy
+Environment="PODMAN_PROXY_USERNAME={{ lookup('ansible.builtin.env', 'PODMAN_PROXY_USERNAME') }}"
+Environment="PODMAN_PROXY_PASSWORD={{ lookup('ansible.builtin.env', 'PODMAN_PROXY_PASSWORD') }}"
+ExecStart=/opt/podman_proxy/run
 
 [Install]
 WantedBy=default.target

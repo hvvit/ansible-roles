@@ -1,0 +1,22 @@
+---
+
+- name: Create directory for podman-proxy directory
+  file:
+    path: /opt/podman_proxy
+    state: directory
+    mode: 0755
+  become: true
+
+
+- name: Check if podman_proxy binary exists
+  stat:
+    path: /opt/podman_proxy/run
+  register: podman_proxy_binary
+
+- name: Copy podman binary
+  copy:
+    src: binaries/podman_proxy
+    dest: /opt/podman_proxy/run
+    mode: 0777
+  become: true
+  when: not podman_proxy_binary.stat.exists
